@@ -75,6 +75,72 @@ class bhatttransportdb {
             echo "Error: " . $e->getMessage();
         }
     }
+    public function updateBooking($id, $customerName, $driverName, $vehical_number, $route, $rate, $kuntal, $bhada, $bookingDate) {
+       try{
+            echo "UPDATE bookings SET customerName = :customerName, driverName = :driverName, vehical_number = :vehical_number, route = :route, rate = :rate, kuntal = :kuntal, bhada = :bhada, bookingDate = :bookingDate WHERE id = :id";
+            $stmt = $this->pdo->prepare("UPDATE bookings SET customerName = :customerName, driverName = :driverName, vehical_number = :vehical_number, route = :route, rate = :rate, kuntal = :kuntal, bhada = :bhada, bookingDate = :bookingDate WHERE id = :id");
+            // Bind values
+            $stmt->execute([
+                ':customerName' => $customerName,
+                ':driverName'   => $driverName,
+                ':vehical_number'=> $vehical_number,
+                ':route'        => $route,
+                ':rate'         => $rate,
+                ':kuntal'       => $kuntal,
+                ':bhada'        => $bhada,
+                ':bookingDate'  => $bookingDate,
+                ':id'           => $id
+            ]);
+            return $stmt->rowCount(); // number of rows updated
+        }
+        catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function updateBookingDetails($bookingId, $total_rent, $rent_status, $payment_type, $total_driver_expense, $total_vehicle_expense, $driver_expense_type, $vehicle_expense_type, $goods_owner, $loading_time, $unloading_time, $seller_name, $payment_receiver, $loading_unloading_status, $vehical_number) {
+    try {
+        $stmt = $this->pdo->prepare(" UPDATE booking_detail SET total_rent = :total_rent,
+                rent_status = :rent_status,
+                payment_type = :payment_type,
+                total_driver_expense = :total_driver_expense,
+                total_vehicle_expense = :total_vehicle_expense,
+                driver_expense_type = :driver_expense_type,
+                vehicle_expense_type = :vehicle_expense_type,
+                goods_owner = :goods_owner,
+                loading_time = :loading_time,
+                unloading_time = :unloading_time,
+                seller_name = :seller_name,
+                payment_receiver = :payment_receiver,
+                loading_unloading_status = :loading_unloading_status,
+                vehical_number = :vehical_number
+            WHERE bookingId = :bookingId
+        ");
+
+        $stmt->execute([
+            ':bookingId' => $bookingId,
+            ':total_rent' => $total_rent,
+            ':rent_status' => $rent_status,
+            ':payment_type' => $payment_type,
+            ':total_driver_expense' => $total_driver_expense,
+            ':total_vehicle_expense' => $total_vehicle_expense,
+            ':driver_expense_type' => $driver_expense_type,
+            ':vehicle_expense_type' => $vehicle_expense_type,
+            ':goods_owner' => $goods_owner,
+            ':loading_time' => $loading_time,
+            ':unloading_time' => $unloading_time,
+            ':seller_name' => $seller_name,
+            ':payment_receiver' => $payment_receiver,
+            ':loading_unloading_status' => $loading_unloading_status,
+            ':vehical_number' => $vehical_number
+        ]);
+
+        return $stmt->rowCount(); // number of rows updated
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 
     // Insert data into table
     public static function getBookings($query) {

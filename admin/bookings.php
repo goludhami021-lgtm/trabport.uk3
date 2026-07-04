@@ -110,7 +110,7 @@ include 'Header.php';
             </select>
             </div>
               <div class="col-12">
-              <input type="text" value="type" name="check_loading_status" id="check_loading_status">  
+              <input type="hidden" value="type" name="check_loading_status" id="check_loading_status">  
 
             </div>
            

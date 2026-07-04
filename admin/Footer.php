@@ -62,6 +62,29 @@ $("#createBookingForm").on("submit", function(e) {
         const obj = new BookingConfig();
         obj.getLoading();
     });
+
+$("#updateBookingForm").on("submit", function(e) {
+  alert("update booking method called");
+    e.preventDefault();
+      $.ajax({
+        url: "config.php",
+        type: "POST",
+        data: $(this).serialize(),
+        success: function(response) { 
+           // alert("this is response: " + response);
+        if(response.trim() === "success") {
+            alert("Booking updated successfully!");
+            // Redirect to admin dashboard or another page
+            window.location.href = "dashboard.php"; // Change to your dashboard page
+          } else {
+            alert("Error updating booking: " + response);
+          }
+        }
+      });
+    });
+
+
+
 </script>   
 </body>
 </html>

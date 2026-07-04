@@ -44,7 +44,7 @@ if(! isset($_SESSION['user'])) {
         <div class="container mt-5">
         <!-- Form Section -->
         <h2 class="mb-4">Update Booking</h2>
-        <form class="row g-3" >
+        <form class="row g-3" id="updateBookingForm">
             <div class="col-md-4">
             <label for="inputName" class="form-label">Customer Name:</label>
             <input type="text" class="form-control" name="customerName" id="customerName" placeholder="Enter your name" value="<?php echo $bookings[0]['customerName']; ?>">
@@ -144,57 +144,17 @@ if(! isset($_SESSION['user'])) {
             </select>
             </div>
               <div class="col-12">
-              <input type="text" value="type" name="check_loading_status" id="check_loading_status">  
-            </div>
+              <input type="hidden" value="type" name="check_loading_status" id="check_loading_status">  
+              <input  type="hidden" name="id" id="id" value="<?php echo $_GET['id']?> "> 
+               </div>
+               
              <div class="col-12">
-              <input type="hidden" value="UpdateBooking" name="booking" id="booking">  
+              <input type="hidden" value="UpdateBooking" name="UpdateBooking" id="UpdateBooking">  
             <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
-
-
-        <!-- Table Section -->
-        <h2 class="mt-5 mb-4">Bookings</h2>
-        <table class="table table-striped table-hover">
-            <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Route</th>
-                <th scope="col">Booking Date</th>
-                <th scope="col">Rate</th>
-                <th scope="col">Kuntal</th>
-                <th scope="col">Bhada</th>
-                <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-              require_once 'bhatttransportdb.php';
-              //Calling static method for geting bookings
-              $bookings = bhatttransportdb::getBookings("SELECT * FROM bookings");
-              foreach($bookings as $booking) { ?>
-                  <tr>
-                      <th scope='row'><?php echo $booking['id']; ?></th>
-                      <td><a href="booking_details.php?id=<?php echo $booking['id']; ?>"><?php echo $booking['customerName']; ?></a></td>
-                      <td><?php echo $booking['route']; ?></td>
-                      <td><?php echo $booking['rate']; ?></td>
-                      <td><?php echo $booking['kuntal']; ?></td>
-                      <td><?php echo $booking['bhada']; ?></td>
-                      <td><?php echo $booking['bookingDate']; ?></td>
-                      <td><input  class="btn btn-success" type="button" value="<?php echo $booking['status']; ?>"></td>
-                      
-                  </tr>
-              <?php } ?>
-            </tbody>
-        </table>
-       
-        </div>
+      </div>
 </div>
-</body>
-</html>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</body>
-</html>
+<?php
+include 'Footer.php'; 
+?>

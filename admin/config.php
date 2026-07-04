@@ -20,12 +20,21 @@ if(isset($_REQUEST['AdminLogin']) && $_REQUEST['AdminLogin'] == 'ADMIN_LOGIN'){
     echo $message;
 }
 
+
+if (isset($_POST['UpdateBooking']) && $_POST['UpdateBooking'] == 'UpdateBooking') {
+    // Convert all POST keys into variables
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+   extract($_POST);
+    $db->updateBooking($id, $customerName, $driverName, $vehical_number, $route, $rate, $kuntal, $bhada, $bookingDate);
+    $db->updateBookingDetails($id, $total_rent, $rent_status, $payment_type, $total_driver_expense, $total_vehicle_expense, $driver_expense_type, $vehicle_expense_type, $goods_owner, $loading_time, $unloading_time, $seller_name, $payment_receiver, $loading_unloading_status, $vehical_number);    
+
+}
+
 // Handle booking form
 if (isset($_POST['booking']) && $_POST['booking'] == 'CreateBooking') {
-    // echo "<pre>";
-    // echo "This is the request data: ";
-    // print_r($_REQUEST);
-    // echo "</pre>";
+   
     $customerName   = $_POST['customerName'];
     $driverName   = $_POST['driverName'];
     $vehical_number  = $_POST['vehical_number'];
@@ -34,7 +43,6 @@ if (isset($_POST['booking']) && $_POST['booking'] == 'CreateBooking') {
     $kuntal = $_POST['kuntal'];
     $bhada  = $_POST['bhada'];
     $date   = $_POST['bookingDate'];
-///////////////////////////
     $rent  = $_POST['total_rent'];
     $status  = $_POST['rent_status'];
     $payment   = $_POST['Payment_type'];

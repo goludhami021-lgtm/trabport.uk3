@@ -39,7 +39,7 @@ include 'Header.php';
                       <td><?php echo $booking['kuntal']; ?></td>
                       <td><?php echo $booking['bhada']; ?></td>
                       <td><?php echo $booking['bookingDate']; ?></td>
-                      <td><input  class="btn btn-success" type="button" value="<?php echo $booking['status']; ?>"></td>
+                      <td><?php echo $booking['status']; ?></td>
                       <td><input  class="btn btn-danger" type="button" value="Delete" id="delete" onclick=""></td>
 
                   </tr>
