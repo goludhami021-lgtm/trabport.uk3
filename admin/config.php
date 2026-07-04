@@ -22,10 +22,6 @@ if(isset($_REQUEST['AdminLogin']) && $_REQUEST['AdminLogin'] == 'ADMIN_LOGIN'){
 
 
 if (isset($_POST['UpdateBooking']) && $_POST['UpdateBooking'] == 'UpdateBooking') {
-    // Convert all POST keys into variables
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
    extract($_POST);
     $db->updateBooking($id, $customerName, $driverName, $vehical_number, $route, $rate, $kuntal, $bhada, $bookingDate);
     $db->updateBookingDetails($id, $total_rent, $rent_status, $payment_type, $total_driver_expense, $total_vehicle_expense, $driver_expense_type, $vehicle_expense_type, $goods_owner, $loading_time, $unloading_time, $seller_name, $payment_receiver, $loading_unloading_status, $vehical_number);    

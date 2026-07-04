@@ -93,19 +93,19 @@ if(! isset($_SESSION['user'])) {
             </select>
             </div>
              <div class="col-md-4">
-            <label for="Payment_type" class="form-label">Payment type</label>
-            <select class="form-select" name="Payment_type" id="Payment_type">
+            <label for="payment_type" class="form-label">Payment_type</label>
+            <select class="form-select" name="payment_type" id="payment_type">
             <option value="Cash" selected>Cash</option>
             <option value="Mobile Payment">Mobile Payment</option>
             </select>
             </div>
              <div class="col-md-4">
             <label for="Driver's expense" class="form-label">Driver's expense</label>
-            <input type="text" class="form-control" name="Driver's expense" id="Driver's expense" placeholder="Enter value here" value="<?php echo $bookings[0]['total_driver_expense']; ?>">
+            <input type="text" class="form-control" name="total_driver_expense" id="total_driver_expense" placeholder="Enter value here" value="<?php echo $bookings[0]['total_driver_expense']; ?>">
             </div>
              <div class="col-md-4">
             <label for=" Vehicle  expense" class="form-label"> Vehicle  expense</label>
-            <input type="text" class="form-control" name=" Vehicle  expense" id=" Vehicle  expense" placeholder="enter value here" value="<?php echo $bookings[0]['total_vehicle_expense']; ?>">
+            <input type="text" class="form-control" name="total_vehicle_expense" id="total_vehicle_expense" placeholder="enter value here" value="<?php echo $bookings[0]['total_vehicle_expense']; ?>">
             </div>
              <div class="col-md-4">
             <label for="driver_expense_type" class="form-label">Driver Expense Type</label>

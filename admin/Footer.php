@@ -71,10 +71,7 @@ $("#updateBookingForm").on("submit", function(e) {
         type: "POST",
         data: $(this).serialize(),
         success: function(response) { 
-           // alert("this is response: " + response);
         if(response.trim() === "success") {
-            alert("Booking updated successfully!");
-            // Redirect to admin dashboard or another page
             window.location.href = "dashboard.php"; // Change to your dashboard page
           } else {
             alert("Error updating booking: " + response);

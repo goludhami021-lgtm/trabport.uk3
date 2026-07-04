@@ -77,7 +77,6 @@ class bhatttransportdb {
     }
     public function updateBooking($id, $customerName, $driverName, $vehical_number, $route, $rate, $kuntal, $bhada, $bookingDate) {
        try{
-            echo "UPDATE bookings SET customerName = :customerName, driverName = :driverName, vehical_number = :vehical_number, route = :route, rate = :rate, kuntal = :kuntal, bhada = :bhada, bookingDate = :bookingDate WHERE id = :id";
             $stmt = $this->pdo->prepare("UPDATE bookings SET customerName = :customerName, driverName = :driverName, vehical_number = :vehical_number, route = :route, rate = :rate, kuntal = :kuntal, bhada = :bhada, bookingDate = :bookingDate WHERE id = :id");
             // Bind values
             $stmt->execute([
